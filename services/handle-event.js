@@ -8,6 +8,7 @@ exports.handleEvent = (event) => {
       switch (event.message.type) {
         case "text":
             services.handleMessage(event)
+            break;
         case "sticker":
           console.log("sticker message");
           break;
@@ -16,7 +17,7 @@ exports.handleEvent = (event) => {
       }
       break;
     case "postback":
-      console.log("postback");
+      console.log("Room Pro ID:" + event.postback.data);
       break;
     default:
       throw new Error("UNknow event" + JSON.stringify(event));
