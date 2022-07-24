@@ -11,6 +11,9 @@ exports.sendFlexPromotion = async () => {
   let promotion = response.data;
 
   bubbles = promotion.map((item) => {
+    let postbackType = { type: "roompromotion" };
+    let newItem = { ...postbackType, ...item };
+
     return {
       type: "bubble",
       hero: {
@@ -80,7 +83,7 @@ exports.sendFlexPromotion = async () => {
             action: {
               type: "postback",
               label: "รายละเอียดราคา",
-              data: JSON.stringify(item),
+              data: JSON.stringify(newItem),
             },
             color: "#ff6900",
           },
